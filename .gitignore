@@ -1,0 +1,4 @@
+school_automation/api/migrations/__pycache__/
+school_automation/api/__pycache__/
+school_automation/school_automation/__pycache__/
+*.sqlite3

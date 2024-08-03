@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  mysql:
+    container_name: mysql
+    build:
+      context: ./MYSQL
+      dockerfile: Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: databasemysql
+    ports:
+      - "3306:3306"
+    # pid: host  # Uncomment this line if you want to use the host's PID namespace
+
+
+
+  django:
+    container_name: django
+    build:
+      context: ./school_automation
+
+    command: python manage.py runserver 0.0.0.0:8000
+
+    volumes:
+      - ./school_automation:/usr/src/app/
+    ports:
+      - 8001:8000
+    env_file:
+      - .env
+
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:
