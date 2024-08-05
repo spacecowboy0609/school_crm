@@ -310,7 +310,7 @@ class AdvertisementModelSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = AdvertisementModel
-        fields = ["name","description","water_tribe","created_date"]
+        fields = ["id","name","description","water_tribe","created_date"]
 
 class NewStudentFormModelSerializer(serializers.ModelSerializer):
     class Meta:
