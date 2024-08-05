@@ -52,7 +52,7 @@ class UserModelSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserModel
-        fields = ["id", "phone_number", "first_name", "last_name","gender","address", "status", "password", "user_image"]
+        fields = ["id", "phone_number", "first_name", "last_name","gender","address", "status", "password", "image"]
         read_only_fields = ["id", "status"]
 
     def create(self, validated_data):
@@ -62,9 +62,10 @@ class UserModelSerializer(serializers.ModelSerializer):
         return user
 
     def update(self, instance, validated_data):
+        instance.phone_number=validated_data.get("phone_number",instance.phone_number )
         instance.first_name = validated_data.get("first_name", instance.first_name)
         instance.last_name = validated_data.get("last_name", instance.last_name)
-        instance.user_image = validated_data.get("user_image", instance.user_image)
+        instance.image = validated_data.get("image", instance.image)
         instance.address = validated_data.get("address", instance.address)
         instance.gender = validated_data.get("gender", instance.gender)
         if "password" in validated_data:

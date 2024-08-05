@@ -161,6 +161,8 @@ class TeacherModelViewSet(ModelViewSet):
             subject=subject,
             salary_type=salary_type,
             commission=commission,)
+        serializer=TeacherModelSerializer(new_teacher)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     @action(detail=False,methods=["get"])
     def teachers_salary(self,request,teacher_id=None):
@@ -214,7 +216,7 @@ class StuffUserModelViewSet(ModelViewSet):
             first_name=first_name,
             last_name=last_name,
             status=status1,
-            user_image=image,
+            image=image,
             gender=gender,
             address=address
         )
