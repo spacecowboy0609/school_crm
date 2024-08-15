@@ -37,7 +37,7 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        image_instance = self.user_image
+        image_instance = self.image
         new_directory_path = os.path.join(MEDIA_ROOT, f"user_{self.id}")
         if not os.path.exists(new_directory_path):
             os.makedirs(new_directory_path)
@@ -48,8 +48,8 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
             shutil.move(source_image_path, new_image_path)
         except Exception as e:
             return JsonResponse({'success': False, 'error_message': f"Error moving image file: {e}"}, status=400)
-        if self.user_image != f"user_{self.id}/{file_name}":
-            self.user_image = f"user_{self.id}/{file_name}"
+        if self.image != f"user_{self.id}/{file_name}":
+            self.image = f"user_{self.id}/{file_name}"
             self.save()
 
     class Meta:

@@ -5,7 +5,10 @@ while ! mysqladmin ping -h"mysql" --silent; do
     sleep 2
 done
 echo "Apply database migrations"
-python manage.py makemigrations
-python manage.py migrate
+python3 manage.py makemigrations
+python3 manage.py migrate
+
+echo "Creating superuser"
+python3 manage.py createsuperuser --noinput --phone_number "$DJANGO_SUPERUSER_PHONE_NUMBER"
 
 exec "$@"
