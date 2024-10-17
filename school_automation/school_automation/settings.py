@@ -41,8 +41,7 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework.authtoken',
     'corsheaders',
-    
-    
+    'drf_yasg',
     'api.apps.ApiConfig',
 ]
 
@@ -86,14 +85,13 @@ DATABASES = {
         'NAME': 'school_crm',  
         'USER': 'root',  
         'PASSWORD': 'databasemysql',  
-        'HOST': 'mysql',  
+        'HOST': 'mysql-schoolcrm',  
         'PORT': '3306',  
         'OPTIONS': {  
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
         }   
     }  
 }  
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

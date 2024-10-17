@@ -176,10 +176,7 @@ class TeacherModelViewSet(ModelViewSet):
         user.status=""
         user.save()
         return super().perform_destroy(instance)
-    def get_serializer_class(self):
-        if self.action in ["teachers_salary", " "]:
-            return None
-        return super().get_serializer_class()
+
 
 
     def get_permissions(self):
