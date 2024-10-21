@@ -1,16 +1,16 @@
 version: '3.8'
 
 services:
-  mysql:
-    container_name: mysql-schoolcrm
-    build:
-      context: ./MYSQL
-      dockerfile: Dockerfile
-    environment:
-      MYSQL_ROOT_PASSWORD: databasemysql
-    ports:
-      - "3306:3306"
-    # pid: host  # Uncomment this line if you want to use the host's PID namespace
+  # mysql:
+  #   container_name: mysql-schoolcrm
+  #   build:
+  #     context: ./MYSQL
+  #     dockerfile: Dockerfile
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: databasemysql
+  #   ports:
+  #     - "3306:3306"
+  #   # pid: host  # Uncomment this line if you want to use the host's PID namespace
 
 
 
@@ -28,7 +28,7 @@ services:
     env_file:
       - .env
 
-    depends_on:
-      - mysql
+    # depends_on:
+    #   - mysql
 
 
